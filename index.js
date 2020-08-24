@@ -111,7 +111,7 @@ var mapOption = {
     level: 5, // 지도의 확대 레벨
     mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 }; 
-var myloc = new kakao.maps.LatLng(lat, lon);
+var myloc = new kakao.maps.LatLng(lat, log);
 var map = new kakao.maps.Map(mapContainer, mapOption);
 displayMarker(myloc)
 catSearch();
