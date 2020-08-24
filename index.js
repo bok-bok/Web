@@ -7,10 +7,11 @@ var mapContainer = document.getElementById('map')// 지도를 표시할 div
 	
 
 
-var myloc
+
 
 function searchMyLoc() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+    
     if (navigator.geolocation) {
 
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -19,7 +20,7 @@ function searchMyLoc() {
             var lat = position.coords.latitude, // 위도
                 lon = position.coords.longitude; // 경도
 
-            myloc = new kakao.maps.LatLng(lat, lon)
+            var myloc = new kakao.maps.LatLng(lat, lon)
 
             var mapOption = {
 		        center: new kakao.maps.LatLng(lat,lon), // 지도의 중심좌표
