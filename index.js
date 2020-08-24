@@ -21,7 +21,7 @@ function searchMyLoc() {
                 lon = position.coords.longitude; // 경도
 
             var myloc = new kakao.maps.LatLng(lat, lon);
-
+            return myloc;
             
 
             
@@ -31,13 +31,13 @@ function searchMyLoc() {
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
-        
+        return 0
         
          
         
     }
 
-    return myloc;
+    
 }
 
 
@@ -55,7 +55,7 @@ function displayMarker(myloc) {
     var circle = new kakao.maps.Circle({
         map: map, // 원을 표시할 지도 객체
         center : new kakao.maps.LatLng(myloc.getLat(), myloc.getLng()), // 지도의 중심 좌표
-        radius : 50, // 원의 반지름 (단위 : m)
+        radius : 500, // 원의 반지름 (단위 : m)
         fillColor: '#00a0e9', // 채움 색
         fillOpacity: 0.2, // 채움 불투명도
         strokeWeight: 1, // 선의 두께
@@ -113,6 +113,7 @@ var mapOption = {
 }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption);
+displayMarker(myLoc)
 catSearch();
 
 
