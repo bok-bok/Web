@@ -62,7 +62,7 @@ function displayMarker(locPosition) {
     map.setCenter(locPosition);      
 }    
 
-			
+search()
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map); 
