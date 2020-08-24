@@ -5,7 +5,7 @@ var mapContainer = document.getElementById('map')// 지도를 표시할 div
 
 
 	
-var map
+
 
 
 
@@ -22,27 +22,19 @@ function searchMyLoc() {
 
             var myloc = new kakao.maps.LatLng(lat, lon)
 
-            var mapOption = {
-		        center: new kakao.maps.LatLng(lat,lon), // 지도의 중심좌표
-		        level: 5, // 지도의 확대 레벨
-                mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-            }; 
+            
 
-            var map = new kakao.maps.Map(mapContainer, mapOption); 
-            displayMarker(myloc);
+            return myloc
+            
 
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
         
-        var mapOption = {
-		    center: new kakao.maps.LatLng(33.450701,126.570667), // 지도의 중심좌표
-		    level: 3, // 지도의 확대 레벨
-            mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-        };
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
-        displayMarker(myloc);
+        
+         
+        
     }
 }
 
@@ -111,9 +103,15 @@ function displayMarkerr(place) {
     });
 }
 
-searchMyLoc()
-var ps = new kakao.maps.services.Places(map); 
-catSearch()
+var myLoc = searchMyLoc()
+var mapOption = {
+    center: new kakao.maps.LatLng(myLoc.getLat(),myLoc.getLng()), // 지도의 중심좌표
+    level: 5, // 지도의 확대 레벨
+    mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+}; 
+
+var map = new kakao.maps.Map(mapContainer, mapOption);
+catSearch();
 
 
 
