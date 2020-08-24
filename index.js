@@ -1,7 +1,7 @@
 
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
-var mapContainer = document.getElementById('map')// 지도를 표시할 div 
+var mapContainer = document.getElementById('map');// 지도를 표시할 div 
 
 
 	
@@ -20,11 +20,11 @@ function searchMyLoc() {
             var lat = position.coords.latitude, // 위도
                 lon = position.coords.longitude; // 경도
 
-            var myloc = new kakao.maps.LatLng(lat, lon)
+            var myloc = new kakao.maps.LatLng(lat, lon);
 
             
 
-            return myloc
+            
             
 
         });
@@ -36,6 +36,8 @@ function searchMyLoc() {
          
         
     }
+
+    return myloc;
 }
 
 
