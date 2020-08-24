@@ -114,6 +114,7 @@ var mapOption = {
 var myloc = new kakao.maps.LatLng(lat, log);
 var map = new kakao.maps.Map(mapContainer, mapOption);
 displayMarker(myloc)
+var ps = new kakao.maps.services.Places(map);
 catSearch();
 
 
