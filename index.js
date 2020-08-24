@@ -20,8 +20,8 @@ function searchMyLoc() {
             var lat = position.coords.latitude, // 위도
                 lon = position.coords.longitude; // 경도
 
-            var myloc = new kakao.maps.LatLng(lat, lon);
-            return myloc;
+            
+            return lat,lon;
             
 
             
@@ -105,15 +105,15 @@ function displayMarkerr(place) {
     });
 }
 
-var myLoc = searchMyLoc()
+var lat,log = searchMyLoc()
 var mapOption = {
-    center: new kakao.maps.LatLng(myLoc.getLat(),myLoc.getLng()), // 지도의 중심좌표
+    center: new kakao.maps.LatLng(lat,log), // 지도의 중심좌표
     level: 5, // 지도의 확대 레벨
     mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 }; 
-
+var myloc = new kakao.maps.LatLng(lat, lon);
 var map = new kakao.maps.Map(mapContainer, mapOption);
-displayMarker(myLoc)
+displayMarker(myloc)
 catSearch();
 
 
