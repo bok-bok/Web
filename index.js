@@ -69,14 +69,12 @@ function displayMarker(myloc) {
 
 
 
-// 장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places(); 
+
+
 
 
 function catSearch(){
-    ps.categorySearch('FD6', placesSearchCB, {
-        location: new kakao.maps.LatLng(myloc.getLat(), myloc.getLng())
-    }); 
+    ps.categorySearch('FD6', placesSearchCB, {useMapBounds:true}); 
 }
 
 
@@ -106,6 +104,7 @@ function displayMarkerr(place) {
 }
 
 searchMyLoc()
+var ps = new kakao.maps.services.Places(map); 
 catSearch()
 
 
