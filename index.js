@@ -11,8 +11,9 @@ var mapOption = {
 		// 지도를 생성한다 
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+var myloc
 
-function search() {
+function searchMyLoc() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
     if (navigator.geolocation) {
 
@@ -22,34 +23,35 @@ function search() {
             var lat = position.coords.latitude, // 위도
                 lon = position.coords.longitude; // 경도
 
-            var locPosition = new kakao.maps.LatLng(lat, lon)
-            displayMarker(locPosition);
+            myloc = new kakao.maps.LatLng(lat, lon)
+            displayMarker(myloc);
 
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
-        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+        myloc = new kakao.maps.LatLng(33.450701, 126.570667),
             message = 'geolocation을 사용할수 없어요..'
 
-        displayMarker(locPosition);
+        displayMarker(myloc);
     }
 }
 
 
+
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-function displayMarker(locPosition) {
+function displayMarker(myloc) {
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
-        position: locPosition
+        position: myloc
     }); 
     
     
     var circle = new kakao.maps.Circle({
         map: map, // 원을 표시할 지도 객체
-        center : new kakao.maps.LatLng(locPosition.getLat(), locPosition.getLng()), // 지도의 중심 좌표
+        center : new kakao.maps.LatLng(myloc.getLat(), myloc.getLng()), // 지도의 중심 좌표
         radius : 50, // 원의 반지름 (단위 : m)
         fillColor: '#00a0e9', // 채움 색
         fillOpacity: 0.2, // 채움 불투명도
@@ -59,16 +61,22 @@ function displayMarker(locPosition) {
         strokeStyle: 'solid' // 선 스타일
     });	
     // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
+    map.setCenter(myloc);      
 }    
 
-search()
+
+
+
+
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map); 
 
-// 카테고리로 은행을 검색합니다
-ps.categorySearch('FD6', placesSearchCB, {useMapBounds:true}); 
+
+function catSearch(){
+    ps.categorySearch('FD6', placesSearchCB, {useMapBounds:true}); 
+}
+
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
@@ -95,7 +103,8 @@ function displayMarkerr(place) {
     });
 }
 
-
+searchMyLoc()
+catSearch()
 
 
 
