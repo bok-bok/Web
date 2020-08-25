@@ -1,7 +1,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨 
+        level: 7 // 지도의 확대 레벨 
     }; 
 
 var circleRadius
@@ -79,12 +79,11 @@ function displayCurrentPosition(locPosition, message) {
     map.setCenter(locPosition);      
 }    
 
-
-// 음식점을 찾는 함수 
-function catSearch(){
+// 지도 만들고 현재위치 마킹
+function makeMap(){
     mapOption = { 
         center: userLocation, // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨 
+        level: 7 // 지도의 확대 레벨 
     }; 
     map = new kakao.maps.Map(mapContainer, mapOption);
 
@@ -93,6 +92,14 @@ function catSearch(){
         position: userLocation,
         image: markerImage
     });
+}
+
+
+
+// 음식점을 찾는 함수 
+function catSearch(){
+    makeMap()
+    circle.setMap(map)
 
 
     ps.categorySearch('FD6', placesSearchCB, 
