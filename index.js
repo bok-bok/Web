@@ -4,7 +4,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 5 // 지도의 확대 레벨 
     }; 
 
-var centerPosition;
+
+var userLocation;
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
@@ -36,7 +37,7 @@ function findUserPosition() {
 
             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
                 message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
-            centerPosition = locPosition
+            userLocation = locPosition
             // 마커와 인포윈도우를 표시합니다
             displayCurrentPosition(locPosition, message);
             
@@ -81,6 +82,19 @@ function displayCurrentPosition(locPosition, message) {
 
 // 음식점을 찾는 함수 
 function catSearch(){
+    mapOption = { 
+        center: userLocation, // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨 
+    }; 
+    map = new kakao.maps.Map(mapContainer, mapOption);
+
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: userLocation,
+        image: markerImage
+    });
+
+
     ps.categorySearch('FD6', placesSearchCB, 
     {useMapCenter:true}); 
     
