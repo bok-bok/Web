@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>점심?</title>
+	<title>밥?</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -13,21 +13,21 @@
 <body>
 
 	<div>
-		<h1 style="text-align : center">점심 뭐먹지?</h1>
+		<h1 style="text-align : center">오늘 뭐먹지?</h1>
 
 	</div>
 	<div class="mx-auto  list-group  list-group-horizontal">
-		<div id="map" style="margin-right:150px;width:1200px;height:500px;"></div>
+		<div id="map" style="margin-right:100px;width:1200px;height:500px;"></div>
 		<script type="text/javascript"
 			src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=865366688b95d9fac609669c0b02250a&libraries=services"></script>
 
-		<div class="align-baseline">
+		<div>
 			<!--범위 스크롤-->
 			<form>
 				<div class="form-group mb-3">
 					<label for="formControlRange">범위 설정</label>
-					<input type="range" class="form-control-range slider" id="formControlRange" min = "0" max = "1000" step = "1">
-					<p class="result">0</p>
+					<input type="range" class="form-control-range slider" id="formControlRange" min = "0" max = "2000" step = "1">
+					<b class="result">0</b>
 					
 				</div>
 			</form>
@@ -70,7 +70,7 @@
 
 			<div class = "mb-3">
 				<!--실행 버튼-->
-				<button type="button" class="btn btn-outline-primary">검색</button>
+				<button type="button" class="btn btn-outline-primary search">검색</button>
 			</div>
 
 
