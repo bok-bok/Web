@@ -4,6 +4,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 5 // 지도의 확대 레벨 
     }; 
 
+var centerPosition;
+
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 // 유저 마커 이미지 생성 
@@ -34,7 +36,7 @@ function findUserPosition() {
 
             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
                 message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
-
+            centerPosition = locPosition
             // 마커와 인포윈도우를 표시합니다
             displayCurrentPosition(locPosition, message);
             catSearch()
@@ -117,17 +119,24 @@ slider.on("input", function(){
     
 });
 
+circle = new kakao.maps.Circle({ 
+    strokeWeight: 1, // 선의 두께입니다
+    strokeColor: '#00a0e9', // 선의 색깔입니다
+    strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+    strokeStyle: 'solid', // 선의 스타일입니다
+    fillColor: '#00a0e9', // 채우기 색깔입니다
+    fillOpacity: 0.2 // 채우기 불투명도입니다 
+});
+
+
 slider.on("change", function(){
-    circle = new kakao.maps.Circle({ 
-        strokeWeight: 1, // 선의 두께입니다
-        radius: $(this).val(),
-        strokeColor: '#00a0e9', // 선의 색깔입니다
-        strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
-        strokeStyle: 'solid', // 선의 스타일입니다
-        fillColor: '#00a0e9', // 채우기 색깔입니다
-        fillOpacity: 0.2 // 채우기 불투명도입니다 
-    });
-    circle.setMap(map);
+    var circleOptions = { 
+        center : centerPosition, 
+        radius: $(this).val(),                 
+    };
+
+    circle.setOptions(circleOptions)
+    circle.setMap(map)
 });
 
 
