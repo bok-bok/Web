@@ -21,6 +21,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 var ps = new kakao.maps.services.Places(map); 
 
 
+// 사용자의 위치를 찾는 함수 
 function findUserPosition() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
     if (navigator.geolocation) {
@@ -76,7 +77,7 @@ function displayCurrentPosition(locPosition, message) {
 }    
 
 
-
+// 음식점을 찾는 함수 
 function catSearch(){
     ps.categorySearch('FD6', placesSearchCB, 
     {useMapCenter:true}); 
@@ -93,7 +94,7 @@ function catSearch(){
 
 
 
-// 지도에 마커를 표시하는 함수입니다
+// 음식점을 표시하는 함수 
 function displayMarker(place) {
     // 마커를 생성하고 지도에 표시합니다
     var marker = new kakao.maps.Marker({ 
@@ -108,6 +109,14 @@ function displayMarker(place) {
         infowindow.open(map, marker);
     });
 }
+
+var result = $(".result");
+var slider = $(".slider");
+slider.on("input", function(){
+    result.text($(this).val());
+});
+
+
 
 
 findUserPosition()
