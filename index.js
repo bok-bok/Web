@@ -123,6 +123,7 @@ slider.on("input", function(){
         fillColor: '#00a0e9', // 채우기 색깔입니다
         fillOpacity: 0.2 // 채우기 불투명도입니다 
     })
+    circle.setMap(map);
 });
 
 
