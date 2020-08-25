@@ -116,6 +116,13 @@ var result = $(".result");
 var slider = $(".slider");
 slider.on("input", function(){
     result.text($(this).val());
+    var circleOptions = { 
+        center : centerPosition, 
+        radius: $(this).val(),                 
+    };
+
+    circle.setOptions(circleOptions)
+    circle.setMap(map)
     
 });
 
@@ -130,13 +137,7 @@ circle = new kakao.maps.Circle({
 
 
 slider.on("change", function(){
-    var circleOptions = { 
-        center : centerPosition, 
-        radius: $(this).val(),                 
-    };
-
-    circle.setOptions(circleOptions)
-    circle.setMap(map)
+    
 });
 
 
