@@ -114,7 +114,7 @@ var result = $(".result");
 var slider = $(".slider");
 slider.on("input", function(){
     result.text($(this).val());
-    drawingCircle = new kakao.maps.Circle({ 
+    circle = new kakao.maps.Circle({ 
         strokeWeight: 1, // 선의 두께입니다
         radius: $(this).val(),
         strokeColor: '#00a0e9', // 선의 색깔입니다
