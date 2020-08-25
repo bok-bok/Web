@@ -114,6 +114,10 @@ var result = $(".result");
 var slider = $(".slider");
 slider.on("input", function(){
     result.text($(this).val());
+    
+});
+
+slider.on("change", function(){
     circle = new kakao.maps.Circle({ 
         strokeWeight: 1, // 선의 두께입니다
         radius: $(this).val(),
@@ -122,10 +126,9 @@ slider.on("input", function(){
         strokeStyle: 'solid', // 선의 스타일입니다
         fillColor: '#00a0e9', // 채우기 색깔입니다
         fillOpacity: 0.2 // 채우기 불투명도입니다 
-    })
+    });
     circle.setMap(map);
 });
-
 
 
 
