@@ -6,6 +6,22 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
+// 유저 마커 이미지 생성 
+var imageSrc = 'https://toppng.com/uploads/preview/map-marker-icon-600x-map-marker-11562939743ayfahlvygl.png', 
+    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기
+    imageOption = {offset: new kakao.maps.Point(27, 69)}; 
+
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+
+
+
+// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+// 장소 검색 객체를 생성합니다
+var ps = new kakao.maps.services.Places(map); 
+
+
 function findUserPosition() {
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
     if (navigator.geolocation) {
@@ -34,14 +50,14 @@ function findUserPosition() {
 }
 
 
-
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayCurrentPosition(locPosition, message) {
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
-        position: locPosition
+        position: locPosition,
+        image: markerImage
     }); 
     
     var iwContent = message, // 인포윈도우에 표시할 내용
@@ -61,20 +77,6 @@ function displayCurrentPosition(locPosition, message) {
 }    
 
 
-
-
-
-
-
-
-
-// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-
-
-
-// 장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places(map); 
 
 function catSearch(){
     ps.categorySearch('FD6', placesSearchCB, 
