@@ -238,14 +238,18 @@ slider.on("input", function(){
 
 search.on("click", function(){
     catSearch()
+    randomChoice()
 })
 
-
+var timeTerm = 100
 // 랜덤하게 음식점을 뽑는 함수
 function randomChoice(){
     const randomElement = markers[Math.floor(Math.random() * markers.length)];
     for(i = 0; i < 20; i++){
-        MakeStarMarker(randomElement)
+        setTimeout(MakeStarMarker(randomElement),
+        timeTerm
+        )
+        timeTerm = timeTerm * 1.2
     }
 }
 
