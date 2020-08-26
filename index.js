@@ -158,7 +158,8 @@ var slider = $(".slider");
 
 
 
-var circle = new kakao.maps.Circle({ 
+var circle = new kakao.maps.Circle({
+    map: map,
     center: userLocation,
     radius:750,
     strokeWeight: 1, // 선의 두께입니다
@@ -170,7 +171,6 @@ var circle = new kakao.maps.Circle({
     
 });
 
-circle.setMap(map)
 
 
 
