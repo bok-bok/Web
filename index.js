@@ -165,12 +165,39 @@ findUserPosition()
 
 var result = $(".result");
 var slider = $(".slider");
+var search = $(".search");
 
+result.text(slider.val())
 
+circleRadius = slider.val()
 var circleOptions = {
     center: userLocation,
     radius: 750
 }
+
+
+slider.on("input", function(){
+    
+    
+    
+    circleRadius = $(this).val();
+    result.text(circleRadius);
+    circleOptions = {
+        center: userLocation,
+        radius: circleRadius
+    }
+    circle.setOptions(circleOptions)
+    console.log(circle.getRadius());
+    circle.setMap(map);
+    
+});
+
+
+// search 
+
+search.on("click", function(){
+    catSearch()
+})
 
 circle.setOptions(circleOptions)
 circle.setMap(map)
