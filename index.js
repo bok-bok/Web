@@ -257,7 +257,7 @@ function randomChoice(){
 function MakeStarMarker(place){
     var marker = new kakao.maps.Marker({  
         map: map, 
-        position: place,
+        position: new kakao.maps.LatLng(place.y, place.x),
         image: markerImage
     }); 
 }
