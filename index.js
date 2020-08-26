@@ -114,13 +114,19 @@ function catSearch(){
 
     new_latitude  = userLocation.getLat() + (d / 6378) * (180 / Math.PI);
     new_longitude = userLocation.getLng() + (d / 6378) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: new kakao.maps.LatLng(new_latitude, new_longitude),
+        image: markerImage
+    }); 
 
     for(var i = 1; i < 4; i++){
         ps.categorySearch('FD6', placesSearchCB, 
-        {location: new kakao.maps.LatLng(new_latitude,new_longitude) ,
+        {location: new kakao.maps.LatLng(new_latitude,new_longitude),
         radius:circleRadius,
         page:i}); 
     }
+
 
     
     
