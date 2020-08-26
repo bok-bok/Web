@@ -143,10 +143,7 @@ function displayMarker(place) {
 
 var result = $(".result");
 var slider = $(".slider");
-var circleOptions = { 
-    center : userLocation, 
-    radius: slider.val()              
-};
+
 
 
 circle = new kakao.maps.Circle({ 
@@ -190,6 +187,9 @@ findUserPosition()
 
 // 원 그리기
 
-
+circleOptions = { 
+    center : userLocation, 
+    radius: slider.val()              
+};
 circle.setOptions(circleOptions)
 circle.setMap(map)
