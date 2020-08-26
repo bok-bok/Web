@@ -3,7 +3,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 6 // 지도의 확대 레벨 
     }; 
-var makers = []
+var markers = []
 var circleRadius = 750;
 var userLocation;
 var d = 375
@@ -113,6 +113,8 @@ var k = 0
 function catSearch(){
     makeMap()
     circle.setMap(map)
+    // 0
+    var point0 = new kakao.maps.LatLng(userLocation.getLat, userLocation.getLng);
     // 1
     new_latitude  = userLocation.getLat() + (d / 6378000) * (180 / Math.PI);
     new_longitude = userLocation.getLng() + (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
@@ -129,7 +131,7 @@ function catSearch(){
     new_latitude  = userLocation.getLat() - (d / 6378000) * (180 / Math.PI);
     new_longitude = userLocation.getLng() - (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
     var point4 = new kakao.maps.LatLng(new_latitude,new_longitude);
-    
+    markers(point0)
     markers(point1)
     markers(point2)
     markers(point3)
@@ -156,6 +158,7 @@ function catSearch(){
     function placesSearchCB (data, status, pagination) {
         if (status === kakao.maps.services.Status.OK) {
             for (var i=0; i<data.length; i++) {
+                markers.push(data[i]);
                 displayMarker(data[i]);    
                 console.log(data[i])
                 k++
@@ -164,6 +167,12 @@ function catSearch(){
         }
     }
 }
+
+
+function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
+
 
 
 
@@ -230,10 +239,8 @@ search.on("click", function(){
     catSearch()
 })
 
-circle.setOptions(circleOptions)
-circle.setMap(map)
 
-
+var unique = markers.filter(onlyUnique);
 
 
 
