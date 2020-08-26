@@ -95,7 +95,7 @@ function makeMap(){
 }
 
 
-
+var k = 0
 // 음식점을 찾는 함수 
 function catSearch(){
     makeMap()
@@ -117,6 +117,8 @@ function catSearch(){
             for (var i=0; i<data.length; i++) {
                 displayMarker(data[i]);    
                 console.log(data[i])
+                k++
+                console.log(k)
             }       
         }
     }
@@ -135,7 +137,7 @@ function displayMarker(place) {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.pace_name + '</div>');
+        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
     });
 }
@@ -194,4 +196,5 @@ var firstCircleOption = {
     radius: 750              
 };
 circle.setOptions(firstCircleOption)
+console.log("why")
 circle.setMap(map)
