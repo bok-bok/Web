@@ -114,8 +114,8 @@ function catSearch(){
     makeMap()
     circle.setMap(map)
 
-    new_latitude  = (userLocation.getLat() + (d / 6378) * (180 / Math.PI))/1000;
-    new_longitude = (userLocation.getLng() + (d / 6378) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180))/1000;
+    new_latitude  = userLocation.getLat() + (d / 6378000) * (180 / Math.PI);
+    new_longitude = userLocation.getLng() + (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
     var marker = new kakao.maps.Marker({  
         map: map, 
         position: new kakao.maps.LatLng(new_latitude, new_longitude),
