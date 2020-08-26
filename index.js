@@ -4,7 +4,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 6 // 지도의 확대 레벨 
     }; 
 var makers = []
-var circleRadius;
+var circleRadius = 750;
 var userLocation;
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -187,7 +187,6 @@ slider.on("input", function(){
         radius: circleRadius
     }
     circle.setOptions(circleOptions)
-    console.log(circle.getRadius());
     circle.setMap(map);
     
 });
