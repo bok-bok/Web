@@ -107,10 +107,11 @@ function makeMap(){
     });
 }
 
+var k
 
-var k = 0
 // 음식점을 찾는 함수 
 function catSearch(){
+    k = 0
     makeMap()
     circle.setMap(map)
     // 0
@@ -160,19 +161,18 @@ function catSearch(){
             for (var i=0; i<data.length; i++) {
                 markers.push(data[i]);
                 displayMarker(data[i]);    
-                console.log(data[i])
                 k++
-                console.log(k)
+                
             }       
         }
     }
+
+
+    $(".number").text(k)
 }
 
 
 
-function onlyUnique(value, index, self) { 
-    return self.indexOf(value) === index;
-}
 
 
 
@@ -241,7 +241,7 @@ search.on("click", function(){
 })
 
 
-var unique = markers.filter(onlyUnique);
+slider.val(500)
 
 
 
