@@ -168,7 +168,7 @@ function catSearch(){
     }
 
 
-    $(".number").text(k)
+    
 }
 
 
@@ -241,7 +241,22 @@ search.on("click", function(){
 })
 
 
-slider.val(500)
+// 랜덤하게 음식점을 뽑는 함수
+function randomChoice(){
+    const randomElement = markers[Math.floor(Math.random() * markers.length)];
+    for(i = 0; i < 20; i++){
+        MakeStarMarker(randomElement)
+    }
+}
+
+// 별 마커를 찍는 함수 
+function MakeStarMarker(place){
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: place,
+        image: markerImage
+    }); 
+}
 
 
 
