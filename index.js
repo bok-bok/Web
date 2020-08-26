@@ -169,7 +169,7 @@ circle = new kakao.maps.Circle({
     radius:750
 });
 
-circle.setMap
+circle.setMap(map)
 
 result.text(slider.val())
 
