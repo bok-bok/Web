@@ -101,7 +101,7 @@ function catSearch(){
     makeMap()
     circle.setMap(map)
 
-    for(var i = 0; i < 3; i++){
+    for(var i = 1; i < 4; i++){
         ps.categorySearch('FD6', placesSearchCB, 
         {useMapCenter:true,
         radius:circleRadius,
@@ -155,7 +155,7 @@ circle = new kakao.maps.Circle({
 
 slider.on("input", function(){
     result.text($(this).val());
-    var circleOptions = { 
+    circleOptions = { 
         center : userLocation, 
         radius: $(this).val(),                 
     };
@@ -178,10 +178,12 @@ search.on("click", function(){
 
 
 findUserPosition()
+
+
 result.text(slider.val())
 var circleOptions = { 
     center : userLocation, 
-    radius: slider.val(),                 
+    radius: slider.val()              
 };
 circleRadius = slider.val()
 
