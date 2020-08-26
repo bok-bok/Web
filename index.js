@@ -147,7 +147,7 @@ function displayMarker(place) {
 
 slider.on("input", function(){
     result.text($(this).val());
-    circleOptions = { 
+    var circleOptions = { 
         center : userLocation, 
         radius: $(this).val(),                 
     };
@@ -175,7 +175,7 @@ findUserPosition()
 var result = $(".result");
 var slider = $(".slider");
 
-var circle = new kakao.maps.Circle({ 
+circle = new kakao.maps.Circle({ 
     strokeWeight: 1, // 선의 두께입니다
     strokeColor: '#00a0e9', // 선의 색깔입니다
     strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
