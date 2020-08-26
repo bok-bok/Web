@@ -1,0 +1,22 @@
+
+result.text(slider.val())
+
+circleRadius = slider.val()
+
+slider.on("input", function(){
+    result.text($(this).val());
+    
+    
+    circleRadius = $(this).val();
+    circle.setRadius(circleRadius);
+    console.log(circle.getRadius());
+    circle.setMap(map);
+    
+});
+
+
+// search 
+var search = $(".search")
+search.on("click", function(){
+    catSearch()
+})
