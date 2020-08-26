@@ -4,9 +4,9 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 6 // 지도의 확대 레벨 
     }; 
 var makers = []
-var circleRadius
+var circleRadius;
 var userLocation;
-
+var circleOptions;
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 // 유저 마커 이미지 생성 
@@ -101,6 +101,7 @@ function catSearch(){
     makeMap()
     circle.setMap(map)
 
+
     for(var i = 1; i < 4; i++){
         ps.categorySearch('FD6', placesSearchCB, 
         {useMapCenter:true,
@@ -115,6 +116,7 @@ function catSearch(){
         if (status === kakao.maps.services.Status.OK) {
             for (var i=0; i<data.length; i++) {
                 displayMarker(data[i]);    
+                console.log(data[i])
             }       
         }
     }
@@ -133,7 +135,7 @@ function displayMarker(place) {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.category_group_name + '</div>');
         infowindow.open(map, marker);
     });
 }
@@ -157,11 +159,11 @@ circle = new kakao.maps.Circle({
 
 result.text(slider.val())
 
-var circleRadius = slider.val()
+circleRadius = slider.val()
 
 slider.on("input", function(){
     result.text($(this).val());
-    var circleOptions = { 
+    circleOptions = { 
         center : userLocation, 
         radius: $(this).val(),                 
     };
