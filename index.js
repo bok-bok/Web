@@ -148,7 +148,7 @@ function displayMarker(place) {
 
 
 
-
+// user Location 가져오기 
 findUserPosition()
 
 // slider에 반응하여 원 보여주기 
@@ -158,7 +158,7 @@ var slider = $(".slider");
 
 
 
-circle = new kakao.maps.Circle({ 
+var circle = new kakao.maps.Circle({ 
     strokeWeight: 1, // 선의 두께입니다
     strokeColor: '#00a0e9', // 선의 색깔입니다
     strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
@@ -191,7 +191,7 @@ search.on("click", function(){
     catSearch()
 })
 
-// 원 그리기
+
 
 
 
