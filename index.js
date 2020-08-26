@@ -6,7 +6,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var makers = []
 var circleRadius = 750;
 var userLocation;
-var d
+var d = 375
 var new_latitude
 var new_longitude
 
@@ -114,8 +114,8 @@ function catSearch(){
     makeMap()
     circle.setMap(map)
 
-    new_latitude  = userLocation.getLat() + (d / 6378) * (180 / Math.PI);
-    new_longitude = userLocation.getLng() + (d / 6378) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
+    new_latitude  = (userLocation.getLat() + (d / 6378) * (180 / Math.PI))/1000;
+    new_longitude = (userLocation.getLng() + (d / 6378) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180))/1000;
     var marker = new kakao.maps.Marker({  
         map: map, 
         position: new kakao.maps.LatLng(new_latitude, new_longitude),
