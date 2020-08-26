@@ -159,14 +159,15 @@ var slider = $(".slider");
 
 
 var circle = new kakao.maps.Circle({ 
+    center: userLocation,
+    radius:750,
     strokeWeight: 1, // 선의 두께입니다
     strokeColor: '#00a0e9', // 선의 색깔입니다
     strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
     strokeStyle: 'solid', // 선의 스타일입니다
     fillColor: '#00a0e9', // 채우기 색깔입니다
-    fillOpacity: 0.2, // 채우기 불투명도입니다 
-    center: userLocation,
-    radius:750
+    fillOpacity: 0.2 // 채우기 불투명도입니다 
+    
 });
 
 circle.setMap(map)
@@ -177,10 +178,12 @@ circleRadius = slider.val()
 
 slider.on("input", function(){
     result.text($(this).val());
-    circle.setRadius($(this).val());
     
-    circleRadius = $(this).val()
-    circle.setMap(map)
+    
+    circleRadius = $(this).val();
+    circle.setRadius(circleRadius);
+    console.log(circle.getRadius());
+    circle.setMap(map);
     
 });
 
