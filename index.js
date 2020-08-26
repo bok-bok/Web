@@ -6,6 +6,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var makers = []
 var circleRadius = 750;
 var userLocation;
+var d
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
@@ -111,10 +112,12 @@ function catSearch(){
     makeMap()
     circle.setMap(map)
 
+    new_latitude  = userLocation.getLat() + (d / 6378) * (180 / pi);
+    new_longitude = userLocation.getLng() + (d / 6378) * (180 / pi) / cos(latitude * pi/180);
 
     for(var i = 1; i < 4; i++){
         ps.categorySearch('FD6', placesSearchCB, 
-        {useMapCenter:true,
+        {location: new kakao.maps.LatLng(new_latitude,new_longitude) ,
         radius:circleRadius,
         page:i}); 
     }
@@ -182,6 +185,7 @@ slider.on("input", function(){
     
     circleRadius = $(this).val();
     result.text(circleRadius);
+    d = circleRadius/2
     circleOptions = {
         center: userLocation,
         radius: circleRadius
@@ -200,6 +204,8 @@ search.on("click", function(){
 
 circle.setOptions(circleOptions)
 circle.setMap(map)
+
+
 
 
 
