@@ -112,8 +112,8 @@ function catSearch(){
     makeMap()
     circle.setMap(map)
 
-    new_latitude  = userLocation.getLat() + (d / 6378) * (180 / pi);
-    new_longitude = userLocation.getLng() + (d / 6378) * (180 / pi) / cos(latitude * pi/180);
+    new_latitude  = userLocation.getLat() + (d / 6378) * (180 / Math.PI);
+    new_longitude = userLocation.getLng() + (d / 6378) * (180 / Math.PI) / cos(latitude * Math.PI/180);
 
     for(var i = 1; i < 4; i++){
         ps.categorySearch('FD6', placesSearchCB, 
