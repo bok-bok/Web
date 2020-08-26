@@ -113,23 +113,43 @@ var k = 0
 function catSearch(){
     makeMap()
     circle.setMap(map)
-
+    // 1
     new_latitude  = userLocation.getLat() + (d / 6378000) * (180 / Math.PI);
     new_longitude = userLocation.getLng() + (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
-    var marker = new kakao.maps.Marker({  
-        map: map, 
-        position: new kakao.maps.LatLng(new_latitude, new_longitude),
-        image: markerImage
-    }); 
+    var point1 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    // 2
+    new_latitude  = userLocation.getLat() - (d / 6378000) * (180 / Math.PI);
+    new_longitude = userLocation.getLng() + (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
+    var point2 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    // 3
+    new_latitude  = userLocation.getLat() + (d / 6378000) * (180 / Math.PI);
+    new_longitude = userLocation.getLng() - (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
+    var point3 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    // 4
+    new_latitude  = userLocation.getLat() - (d / 6378000) * (180 / Math.PI);
+    new_longitude = userLocation.getLng() - (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
+    var point4 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    
+    markers(point1)
+    markers(point2)
+    markers(point3)
+    markers(point4)
 
-    for(var i = 1; i < 4; i++){
-        ps.categorySearch('FD6', placesSearchCB, 
-        {location: new kakao.maps.LatLng(new_latitude,new_longitude),
-        radius:d/2,
-        page:i}); 
+    function markers(place){
+        var marker = new kakao.maps.Marker({  
+            map: map, 
+            position: place,
+            image: markerImage
+        }); 
+
+        for(var i = 1; i < 4; i++){
+            ps.categorySearch('FD6', placesSearchCB, 
+            {location: place,
+            radius:d,
+            page:i}); 
+        }
+
     }
-
-
     
     
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
