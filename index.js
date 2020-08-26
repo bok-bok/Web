@@ -123,7 +123,7 @@ function catSearch(){
     for(var i = 1; i < 4; i++){
         ps.categorySearch('FD6', placesSearchCB, 
         {location: new kakao.maps.LatLng(new_latitude,new_longitude),
-        radius:circleRadius,
+        radius:d/2,
         page:i}); 
     }
 
