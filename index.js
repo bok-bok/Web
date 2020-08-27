@@ -245,17 +245,17 @@ slider.on("input", function(){
 // search 
 
 search.on("click", function(){
-    randomChoice();
-    
+    catSearch()
+    setTimeout(randomChoice,1000)
     
 })
 
 
-slider.on("mouseout",catSearch)
+
 
 // 랜덤하게 음식점을 뽑는 함수
 function randomChoice(){
-    var timeTerm = 100
+    var timeTerm = 1000
     for(i = 0; i < 20; i++){
         var randomElement = markers[Math.floor(Math.random() * markers.length)];
         console.log(randomElement)
