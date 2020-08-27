@@ -238,7 +238,7 @@ slider.on("input", function(){
 // search 
 
 search.on("click", function(){
-    $.queue(This.catSearch().queue(This.randomChoice()));
+    $.queue(catSearch().queue(randomChoice()));
 })
 
 
