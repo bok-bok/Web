@@ -142,11 +142,7 @@ function catSearch(){
     for(var i = 0; i < points.length; i++){
         Drawmarkers(points[i]);
     }
-    Drawmarkers(point0)
-    Drawmarkers(point1)
-    Drawmarkers(point2)
-    Drawmarkers(point3)
-    LDrawmarkers(point4, randomChoice)
+   
 
     
     
@@ -154,23 +150,7 @@ function catSearch(){
     
 }
 
-function LDrawmarkers(place, callback){
-        
-    //var marker = new kakao.maps.Marker({  
-    //    map: map, 
-    //    position: place,
-    //    image: markerImage
-    //}); 
 
-    for(var i = 1; i < 4; i++){
-        ps.categorySearch('FD6', placesSearchCB, 
-        {location: place,
-        radius:d,
-        page:i}); 
-    }
-    callback()
-
-}
 
 function Drawmarkers(place){
         
@@ -265,12 +245,13 @@ slider.on("input", function(){
 // search 
 
 search.on("click", function(){
-    catSearch(randomChoice);
+    randomChoice();
     
     
 })
 
 
+slider.on("mouseout",catSearch)
 
 // 랜덤하게 음식점을 뽑는 함수
 function randomChoice(){
