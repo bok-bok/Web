@@ -236,9 +236,15 @@ slider.on("input", function(){
 
 
 // search 
+function delay(callback){
+    catSearch();
+    callback();
 
+}
 search.on("click", function(){
-    $.queue(catSearch().queue(randomChoice()));
+    delay(randomChoice);
+    
+    
 })
 
 
