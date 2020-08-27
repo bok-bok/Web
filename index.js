@@ -110,8 +110,9 @@ function makeMap(){
 var k
 
 // 음식점을 찾는 함수 
-function catSearch(){
+function catSearch(callback){
     k = 0
+    markers = []
     makeMap()
     circle.setMap(map)
     // 0
@@ -138,42 +139,42 @@ function catSearch(){
     Drawmarkers(point3)
     Drawmarkers(point4)
 
-    function Drawmarkers(place){
-        
-        //var marker = new kakao.maps.Marker({  
-        //    map: map, 
-        //    position: place,
-        //    image: markerImage
-        //}); 
-
-        for(var i = 1; i < 4; i++){
-            ps.categorySearch('FD6', placesSearchCB, 
-            {location: place,
-            radius:d,
-            page:i}); 
-        }
-
-    }
     
-    
-    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-    function placesSearchCB (data, status, pagination) {
-        if (status === kakao.maps.services.Status.OK) {
-            for (var i=0; i<data.length; i++) {
-                markers.push(data[i]);
-                //displayMarker(data[i]);    
-                
-                
-            }       
-        }
-    }
-
+    callback()
 
     
 }
 
 
+function Drawmarkers(place){
+        
+    //var marker = new kakao.maps.Marker({  
+    //    map: map, 
+    //    position: place,
+    //    image: markerImage
+    //}); 
 
+    for(var i = 1; i < 4; i++){
+        ps.categorySearch('FD6', placesSearchCB, 
+        {location: place,
+        radius:d,
+        page:i}); 
+    }
+
+}
+
+
+// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+function placesSearchCB (data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+        for (var i=0; i<data.length; i++) {
+            markers.push(data[i]);
+            //displayMarker(data[i]);    
+            
+            
+        }       
+    }
+}
 
 
 
@@ -236,13 +237,9 @@ slider.on("input", function(){
 
 
 // search 
-function delay(callback){
-    catSearch();
-    callback();
 
-}
 search.on("click", function(){
-    delay(randomChoice);
+    catSearch(randomChoice);
     
     
 })
