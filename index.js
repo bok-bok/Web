@@ -139,11 +139,12 @@ function catSearch(){
     Drawmarkers(point4)
 
     function Drawmarkers(place){
-        var marker = new kakao.maps.Marker({  
-            map: map, 
-            position: place,
-            image: markerImage
-        }); 
+        
+        //var marker = new kakao.maps.Marker({  
+        //    map: map, 
+        //    position: place,
+        //    image: markerImage
+        //}); 
 
         for(var i = 1; i < 4; i++){
             ps.categorySearch('FD6', placesSearchCB, 
@@ -237,8 +238,7 @@ slider.on("input", function(){
 // search 
 
 search.on("click", function(){
-    catSearch()
-    randomChoice()
+    $.queue(This.catSearch().queue(This.randomChoice()));
 })
 
 
@@ -249,7 +249,7 @@ function randomChoice(){
     for(i = 0; i < 20; i++){
         var randomElement = markers[Math.floor(Math.random() * markers.length)];
         console.log(randomElement)
-        MakeStarMarker(randomElement)
+        setTimeout(MakeStarMarker(randomElement), timeTerm)
         timeTerm = timeTerm * 1.2
     }
 }
