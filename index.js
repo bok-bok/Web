@@ -244,8 +244,9 @@ search.on("click", function(){
 var timeTerm = 100
 // 랜덤하게 음식점을 뽑는 함수
 function randomChoice(){
-    const randomElement = markers[Math.floor(Math.random() * markers.length)];
+    
     for(i = 0; i < 20; i++){
+        var randomElement = markers[Math.floor(Math.random() * markers.length)];
         setTimeout(MakeStarMarker(randomElement),
         timeTerm
         )
@@ -258,7 +259,7 @@ function MakeStarMarker(place){
     // 마커를 생성하고 지도에 표시합니다
     var marker = new kakao.maps.Marker({ 
         map: map,
-        position: new kakao.maps.LatLng(place.y, place.x)
+        position: place
     });
 
     // 마커에 클릭이벤트를 등록합니다
@@ -271,7 +272,7 @@ function MakeStarMarker(place){
 
 
 
-
+randomChoice();
 
 
 
