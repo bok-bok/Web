@@ -247,6 +247,7 @@ function randomChoice(){
     
     for(i = 0; i < 20; i++){
         var randomElement = markers[Math.floor(Math.random() * markers.length)];
+        console.log(randomElement)
         setTimeout(MakeStarMarker(randomElement),
         timeTerm
         )
@@ -272,7 +273,7 @@ function MakeStarMarker(place){
 
 
 
-randomChoice();
+
 
 
 
