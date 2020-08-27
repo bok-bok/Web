@@ -246,7 +246,7 @@ slider.on("input", function(){
 
 search.on("click", function(){
     catSearch()
-    setTimeout(randomChoice,1000)
+    setTimeout(randomChoice,200)
     
 })
 
