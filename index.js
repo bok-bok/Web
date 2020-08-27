@@ -110,41 +110,67 @@ function makeMap(){
 var k
 
 // 음식점을 찾는 함수 
-function catSearch(callback){
+function catSearch(){
     k = 0
     markers = []
+    var points = []
     makeMap()
     circle.setMap(map)
     // 0
     var point0 = new kakao.maps.LatLng(userLocation.getLat, userLocation.getLng);
+    points.push(point0)
     // 1
     new_latitude  = userLocation.getLat() + (d / 6378000) * (180 / Math.PI);
     new_longitude = userLocation.getLng() + (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
     var point1 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    points.push(point1)
     // 2
     new_latitude  = userLocation.getLat() - (d / 6378000) * (180 / Math.PI);
     new_longitude = userLocation.getLng() + (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
     var point2 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    points.push(point2)
     // 3
     new_latitude  = userLocation.getLat() + (d / 6378000) * (180 / Math.PI);
     new_longitude = userLocation.getLng() - (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
     var point3 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    points.push(point3)
     // 4
     new_latitude  = userLocation.getLat() - (d / 6378000) * (180 / Math.PI);
     new_longitude = userLocation.getLng() - (d / 6378000) * (180 / Math.PI) / Math.cos(userLocation.getLat() * Math.PI/180);
     var point4 = new kakao.maps.LatLng(new_latitude,new_longitude);
+    points.push(point4)
+    for(var i = 0; i < points.length; i++){
+        Drawmarkers(points[i]);
+    }
     Drawmarkers(point0)
     Drawmarkers(point1)
     Drawmarkers(point2)
     Drawmarkers(point3)
-    Drawmarkers(point4)
+    LDrawmarkers(point4, randomChoice)
 
     
-    callback()
+    
 
     
 }
 
+function LDrawmarkers(place, callback){
+        
+    //var marker = new kakao.maps.Marker({  
+    //    map: map, 
+    //    position: place,
+    //    image: markerImage
+    //}); 
+
+    for(var i = 1; i < 4; i++){
+        ps.categorySearch('FD6', placesSearchCB, 
+        {location: place,
+        radius:d,
+        page:i}); 
+    }
+    callback()
+
+}
 
 function Drawmarkers(place){
         
