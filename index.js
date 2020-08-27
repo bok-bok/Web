@@ -246,7 +246,7 @@ slider.on("input", function(){
 
 search.on("click", function(){
     catSearch()
-    setTimeout(randomChoice,200)
+    setTimeout(start(0),200)
     
 })
 
@@ -255,12 +255,24 @@ search.on("click", function(){
 
 // 랜덤하게 음식점을 뽑는 함수
 function randomChoice(){
-    var timeTerm = 1000
+    var timeTerm = 1000;
     for(i = 0; i < 20; i++){
         var randomElement = markers[Math.floor(Math.random() * markers.length)];
         console.log(randomElement)
         setTimeout(MakeStarMarker(randomElement), timeTerm)
         timeTerm = timeTerm * 1.2
+    }
+}
+
+function start(counter){
+    var timeTerm = 1000;
+    if(counter < 20){
+        setTimeout(function(){
+            counter++
+            var randomElement = markers[Math.floor(Math.random() * markers.length)];
+            MakeStarMarker(randomElement)
+            timeTerm *= 1.2
+        },timeTerm)
     }
 }
 
