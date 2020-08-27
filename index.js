@@ -160,8 +160,8 @@ function catSearch(){
         if (status === kakao.maps.services.Status.OK) {
             for (var i=0; i<data.length; i++) {
                 markers.push(data[i]);
-                displayMarker(data[i]);    
-                k++
+                //displayMarker(data[i]);    
+                
                 
             }       
         }
