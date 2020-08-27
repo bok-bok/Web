@@ -255,7 +255,7 @@ function randomChoice(){
 
 // 별 마커를 찍는 함수 
 function MakeStarMarker(place){
-    v// 마커를 생성하고 지도에 표시합니다
+    // 마커를 생성하고 지도에 표시합니다
     var marker = new kakao.maps.Marker({ 
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x)
