@@ -52,7 +52,7 @@ function findUserPosition() {
                 lon = position.coords.longitude; // 경도
 
             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+                message = '<div style="padding:5px;">범위 설정을 해주세요</div>'; // 인포윈도우에 표시될 내용입니다
             userLocation = locPosition
             // 마커와 인포윈도우를 표시합니다
             displayCurrentPosition(locPosition, message);
@@ -214,7 +214,7 @@ function displayMarker(place) {
 findUserPosition()
 
 
-// 처음 원 그리기 
+// 처음 원 그리기 왠지 모르지만 작동을 안함
 circleOptions = {
     center: userLocation,
     radius: circleRadius
@@ -303,7 +303,7 @@ function MakeStarMarker(place){
         markersOnMap[count - 1].setMap(null)
     }
 
-    
+    $(".resultName").text(place.place_name)
     markersOnMap.push(marker)
     count ++
     
