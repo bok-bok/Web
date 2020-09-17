@@ -253,7 +253,7 @@ search.on("click", function(){
 
 
 
-
+var markersOnMap = []
 
 
 function start(counter){
@@ -263,17 +263,21 @@ function start(counter){
         setTimeout(function(){
             counter++
             var randomElement = markers[Math.floor(Math.random() * markers.length)];
+
+            // 나중에 지우기 위해 지금 리스트에 보관 
+            markersOnMap.push(randomElement)
             MakeStarMarker(randomElement)
             start(counter)
         },timeTerm)
     }
 }
-var previous 
+
+
 
 // 별 마커를 찍는 함수 
 function MakeStarMarker(place){
     // 마커를 생성하고 지도에 표시합니다
-    previous.setMap(null)
+    
     previous = new kakao.maps.Marker({ 
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x),
