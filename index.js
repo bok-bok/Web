@@ -304,7 +304,7 @@ function MakeStarMarker(place){
     }
     link = linkpart + place.id
     
-    $(".resultName").text(place.place_name)
+    $(".link").text(place.place_name)
     $(".link").attr("href",link)
     markersOnMap.push(marker)
     count ++
