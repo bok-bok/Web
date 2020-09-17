@@ -178,7 +178,7 @@ function placesSearchCB (data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
         for (var i=0; i<data.length; i++) {
             markers.push(data[i]);
-            //displayMarker(data[i]);    
+               
             
             
         }       
@@ -286,7 +286,7 @@ function start(counter){
     }
 }
 
-
+var linkpart = "https://map.kakao.com/link/to/"
 
 // 별 마커를 찍는 함수 
 function MakeStarMarker(place){
@@ -302,8 +302,10 @@ function MakeStarMarker(place){
     if(count >= 1){
         markersOnMap[count - 1].setMap(null)
     }
-
+    link = linkpart + place.id
+    
     $(".resultName").text(place.place_name)
+    $(".link").attr("href",link)
     markersOnMap.push(marker)
     count ++
     
