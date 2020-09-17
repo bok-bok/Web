@@ -268,12 +268,13 @@ function start(counter){
         },timeTerm)
     }
 }
-
+var previous 
 
 // 별 마커를 찍는 함수 
 function MakeStarMarker(place){
     // 마커를 생성하고 지도에 표시합니다
-    var marker = new kakao.maps.Marker({ 
+    previous.setMap(null)
+    previous = new kakao.maps.Marker({ 
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x),
         image: markerImage
