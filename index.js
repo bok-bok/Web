@@ -241,10 +241,13 @@ slider.on("input", function(){
     
 });
 
-
+var count
+var markersOnMap = []
 // search 
 var timeTerm
 search.on("click", function(){
+    markersOnMap = []
+    count = 0
     catSearch()
     timeTerm = 100
     setTimeout(start(0),300)
@@ -253,7 +256,7 @@ search.on("click", function(){
 
 
 
-var markersOnMap = []
+
 
 
 function start(counter){
@@ -264,8 +267,7 @@ function start(counter){
             counter++
             var randomElement = markers[Math.floor(Math.random() * markers.length)];
 
-            // 나중에 지우기 위해 지금 리스트에 보관 
-            markersOnMap.push(randomElement)
+            
             MakeStarMarker(randomElement)
             start(counter)
         },timeTerm)
@@ -278,11 +280,23 @@ function start(counter){
 function MakeStarMarker(place){
     // 마커를 생성하고 지도에 표시합니다
     
-    previous = new kakao.maps.Marker({ 
-        map: map,
+    marker = new kakao.maps.Marker({ 
+        
         position: new kakao.maps.LatLng(place.y, place.x),
         image: markerImage
     });
+    marker.setMap(map)
+    // 나중에 지우기 위해 지금 리스트에 보관 
+    if(count >= 1){
+        markersOnMap[count - 1].setMap(null)
+    }
+
+    
+    markersOnMap.push(marker)
+    count ++
+    
+    
+
 
     // 마커에 클릭이벤트를 등록합니다
         kakao.maps.event.addListener(marker, 'click', function() {
@@ -290,6 +304,7 @@ function MakeStarMarker(place){
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
     });
+
 }
 
 
