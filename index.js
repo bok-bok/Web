@@ -19,8 +19,11 @@ var circle = new kakao.maps.Circle({
     strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
     strokeStyle: 'solid', // 선의 스타일입니다
     fillColor: '#00a0e9', // 채우기 색깔입니다
-    fillOpacity: 0.2 // 채우기 불투명도입니다 
+    fillOpacity: 0.2// 채우기 불투명도입니다 
+    
 });  
+
+
 
 // 유저 마커 이미지 생성 
 var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', 
@@ -209,6 +212,15 @@ function displayMarker(place) {
 
 // user Location 가져오기 
 findUserPosition()
+
+
+// 처음 원 그리기 
+circleOptions = {
+    center: userLocation,
+    radius: circleRadius
+}
+circle.setOptions(circleOptions)
+circle.setMap(map)
 
 // slider에 반응하여 원 보여주기 
 
