@@ -54,7 +54,7 @@ function findUserPosition() {
                 lon = position.coords.longitude; // 경도
 
             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = '<div style="padding:5px;">범위 설정을 해주세요</div>'; // 인포윈도우에 표시될 내용입니다
+                message = '<div style="padding:5px;">범위 설정 가능</div>'; // 인포윈도우에 표시될 내용입니다
             userLocation = locPosition
             // 마커와 인포윈도우를 표시합니다
             displayCurrentPosition(locPosition, message);
@@ -285,8 +285,9 @@ function start(counter,markerIndex){
 
             do{
                 var randomElement = markers[Math.floor(Math.random() * markers.length)];
+                d = randomElement.distance
             }
-            while(markerIndex.includes(randomElement))
+            while(markerIndex.includes(randomElement) | d == "")
 
             
             
@@ -296,7 +297,7 @@ function start(counter,markerIndex){
             MakeStarMarker(randomElement)
             start(counter,markerIndex)
         },timeTerm)
-    }
+    } 
 }
 
 var linkpart = "https://map.kakao.com/link/to/"
