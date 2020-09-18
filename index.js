@@ -10,6 +10,8 @@ var d = 375
 var new_latitude
 var new_longitude
 
+
+
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 
@@ -255,14 +257,17 @@ slider.on("input", function(){
 
 var count
 var markersOnMap = []
+var markerIndex = []
 // search 
 var timeTerm
 search.on("click", function(){
+    // 랜덤으로 뽑은 인덱스중 중복하는 인덱스를 줄이기 위한 리스트 
+    markerIndex = []
     markersOnMap = []
     count = 0
     catSearch()
     timeTerm = 100
-    setTimeout(start(0),300)
+    setTimeout(start(0,markerIndex),300)
     
 })
 
@@ -270,18 +275,26 @@ search.on("click", function(){
 
 
 
-
-function start(counter){
+function start(counter,markerIndex){
     
     timeTerm *= 1.1
     if(counter < 15){
         setTimeout(function(){
             counter++
-            var randomElement = markers[Math.floor(Math.random() * markers.length)];
+
+
+            do{
+                var randomElement = markers[Math.floor(Math.random() * markers.length)];
+            }
+            while(markerIndex.includes(randomElement))
 
             
+            
+
+            markerIndex.push(randomElement)
+            
             MakeStarMarker(randomElement)
-            start(counter)
+            start(counter,markerIndex)
         },timeTerm)
     }
 }
