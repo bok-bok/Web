@@ -1,0 +1,3 @@
+User-agent: *
+Allow:/
+Sitemap: https://whichmenu.ga/sitemap.xml
