@@ -104,6 +104,8 @@ function makeMap(){
         level: 6 // 지도의 확대 레벨 
     }; 
     map = new kakao.maps.Map(mapContainer, mapOption);
+
+
     kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
     
 
@@ -122,7 +124,7 @@ function makeMap(){
         
         
     });
-    var marker = new kakao.maps.Marker({  
+    userMarker = new kakao.maps.Marker({  
         map: map, 
         position: userLocation,
         image: markerImage
