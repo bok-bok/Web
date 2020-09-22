@@ -58,8 +58,15 @@ function findUserPosition() {
             userLocation = locPosition
             // 마커와 인포윈도우를 표시합니다
             displayCurrentPosition(locPosition);
-            
+            circleOptions = {
+                center: userLocation,
+                radius: circleRadius
+            }
+            circle.setOptions(circleOptions)
+            circle.setMap(map);
         });
+
+
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
@@ -106,7 +113,8 @@ function makeMap(){
         // 마커 위치를 클릭한 위치로 옮깁니다
         userMarker.setPosition(latlng);
         circleOptions = {
-            center: userLocation
+            center: userLocation,
+            radius: circleRadius
         }
         circle.setOptions(circleOptions)
         circle.setMap(map);
@@ -224,13 +232,7 @@ function displayMarker(place) {
 findUserPosition()
 
 
-// 처음 원 그리기 왠지 모르지만 작동을 안함
-circleOptions = {
-    center: userLocation,
-    radius: circleRadius
-}
-circle.setOptions(circleOptions)
-circle.setMap(map)
+
 
 // slider에 반응하여 원 보여주기 
 
