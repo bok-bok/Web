@@ -9,7 +9,7 @@ var userLocation;
 var d = 375
 var new_latitude
 var new_longitude
-
+var userMarker
 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -75,7 +75,7 @@ function findUserPosition() {
 function displayCurrentPosition(locPosition, message) {
 
     // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({  
+    userMarker = new kakao.maps.Marker({  
         map: map, 
         position: locPosition,
         image: markerImage
@@ -338,7 +338,21 @@ function MakeStarMarker(place){
 
 
 
+// 정확한 나의 위치에 마커찍기
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+    
 
+
+
+    // 클릭한 위도, 경도 정보를 가져옵니다 
+    var latlng = mouseEvent.latLng; 
+    userLocation = latlng
+    // 마커 위치를 클릭한 위치로 옮깁니다
+    userMarker.setPosition(latlng);
+    map.setCenter(userLocation)
+    
+    
+});
 
 
 
