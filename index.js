@@ -99,7 +99,7 @@ function makeMap(){
         center: userLocation, // 지도의 중심좌표
         level: 6 // 지도의 확대 레벨 
     }; 
-    map = new kakao.maps.Map(mapContainer, mapOption);
+    var map = new kakao.maps.Map(mapContainer, mapOption);
 
 
     kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
