@@ -54,25 +54,25 @@ function findUserPosition() {
                 lon = position.coords.longitude; // 경도
 
             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = '<div style="padding:5px;">범위 설정 가능</div>'; // 인포윈도우에 표시될 내용입니다
+                
             userLocation = locPosition
             // 마커와 인포윈도우를 표시합니다
-            displayCurrentPosition(locPosition, message);
+            displayCurrentPosition(locPosition);
             
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
-        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-            message = 'geolocation을 사용할수 없어요..'
-
-        displayCurrentPosition(locPosition, message);
+        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
+            
+        
+        displayCurrentPosition(locPosition);
     }
 }
 
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-function displayCurrentPosition(locPosition, message) {
+function displayCurrentPosition(locPosition) {
 
     // 마커를 생성합니다
     userMarker = new kakao.maps.Marker({  
@@ -81,17 +81,6 @@ function displayCurrentPosition(locPosition, message) {
         image: markerImage
     }); 
     
-    var iwContent = message, // 인포윈도우에 표시할 내용
-        iwRemoveable = true;
-
-    // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({
-        content : iwContent,
-        removable : iwRemoveable
-    });
-    
-    // 인포윈도우를 마커위에 표시합니다 
-    infowindow.open(map, userMarker);
     
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);      
