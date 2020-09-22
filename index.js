@@ -104,7 +104,7 @@ function makeMap(){
         level: 6 // 지도의 확대 레벨 
     }; 
     map = new kakao.maps.Map(mapContainer, mapOption);
-
+    kakao.maps.event.addListener(map, 'click', changePosition(mouseEvent));
     var marker = new kakao.maps.Marker({  
         map: map, 
         position: userLocation,
@@ -339,20 +339,22 @@ function MakeStarMarker(place){
 
 
 // 정확한 나의 위치에 마커찍기
-kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-    
+function changePosition(mouseEvent){
 
-
-
-    // 클릭한 위도, 경도 정보를 가져옵니다 
+// 클릭한 위도, 경도 정보를 가져옵니다 
     var latlng = mouseEvent.latLng; 
     userLocation = latlng
     // 마커 위치를 클릭한 위치로 옮깁니다
     userMarker.setPosition(latlng);
-    map.setCenter(userLocation)
-    
-    
-});
+    circleOptions = {
+        center: userLocation
+    }
+    circle.setOptions(circleOptions)
+    circle.setMap(map);
+}
+
+
+kakao.maps.event.addListener(map, 'click', changePosition(mouseEvent));
 
 
 
