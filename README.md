@@ -2,4 +2,4 @@
 
 
 # How to use 
-#### it only works in South Korea because Kakao map API provides only South Korea map. 
+#### it only works in South Korea because Kakao map API only provides South Korea map. 
