@@ -302,12 +302,12 @@ function start(counter,markerIndex){
 
             do{
                 var randomElement = markers[Math.floor(Math.random() * markers.length)];
+                d = randomElement.distance
                 
-                console.log(randomElement);
                 
                 
             }
-            while(markerIndex.includes(randomElement))
+            while(markerIndex.includes(randomElement) || d == "")
 
             
             
