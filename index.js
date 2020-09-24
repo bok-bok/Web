@@ -171,13 +171,14 @@ function catSearch(){
     
 }
 
-
+var page
 
 function Drawmarkers(place){
         
     
 
     for(var i = 1; i < 4; i++){
+        page = i
         ps.categorySearch('FD6', placesSearchCB, 
         {location: place,
         radius:d,
@@ -195,6 +196,10 @@ function placesSearchCB (data, status, pagination) {
            
         }       
     }
+    if(page == 3){
+        start(0,markerIndex)
+    }
+
 }
 
 
@@ -271,10 +276,12 @@ search.on("click", function(){
     markers =[]
     markersOnMap = []
     count = 0
-    catSearch()
+    page = 0
     timeTerm = 100
+    catSearch()
     
-    setTimeout(start(0,markerIndex),300)
+    
+    
     
 })
 
