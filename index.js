@@ -172,7 +172,7 @@ function catSearch(){
     
 }
 
-var page
+
 
 function Drawmarkers(place){
         
@@ -188,7 +188,7 @@ function Drawmarkers(place){
 
 }
 
-
+var markerIndex = []
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
@@ -197,7 +197,10 @@ function placesSearchCB (data, status, pagination) {
            
         }       
     }
-    
+    k++
+    if(k == 15){
+        start(0,markerIndex)
+    }
 
 }
 
@@ -265,7 +268,7 @@ slider.on("input", function(){
 
 var count
 var markersOnMap = []
-var markerIndex = []
+
 // search 
 var timeTerm
 
@@ -279,7 +282,7 @@ search.on("click", function(){
     timeTerm = 100
     catSearch()
     
-    setTimeout(start(0,markerIndex),1000)
+    
     
     
     
