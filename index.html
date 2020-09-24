@@ -61,9 +61,6 @@
 	  
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		  <ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-			  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="howToUse.html" target="_blank">사용법</a>
 			</li>
@@ -89,10 +86,43 @@
 			
 					<!---지도 -->
 			<div id="map" class="mx-auto" style="width:500px;height:500px;"></div>
+
+
+
+
+
+			<div class="mx-auto mt-3 mb-5" style="width: 400px;">
+				<!--범위 스크롤-->
+				<form>
+					<div class="form-group mb-3">
+						<label for="formControlRange"><b>범위 설정(m)</b></label>
+						<div style="width:400px;">
+							<input type="range" class="form-control-range slider" id="formControlRange" min = "0" max = "1500" step = "1">
+						</div>
+					
+						<b class="result">0</b>
+					
+					</div>
+				</form>
+			
+
+			
+				<!--실행 버튼-->
+				<div class = "mb-3">
 				
+					<button type="button" class="btn btn-outline-primary search">검색</button>
+				</div>
+
+				<!--음식점 카카오 링크-->
+				<div>
+					<a href = "www.naver.com" target="_blank" class = "link"><b></b></a>
+				</div>
+			
+			</div>
+		</div>
 				
 			
-		</div>
+	</div>
 		
 
 
@@ -102,35 +132,8 @@
 
 
 
-		<div class="mx-auto mt-3 mb-5" style="width: 400px;">
-			<!--범위 스크롤-->
-			<form>
-				<div class="form-group mb-3">
-					<label for="formControlRange"><b>범위 설정(m)</b></label>
-					<div style="width:400px;">
-						<input type="range" class="form-control-range slider" id="formControlRange" min = "0" max = "1500" step = "1">
-					</div>
-					
-					<b class="result">0</b>
-					
-				</div>
-			</form>
-			
-
-			
-			<!--실행 버튼-->
-			<div class = "mb-3">
-				
-				<button type="button" class="btn btn-outline-primary search">검색</button>
-			</div>
-
-			<!--음식점 카카오 링크-->
-			<div>
-				<a href = "www.naver.com" target="_blank" class = "link"><b></b></a>
-			</div>
-			
-		</div>
-	</div>
+		
+	
 	<div class="ad-banner">
 		<ins class="kakao_ad_area" style="display:none;" 
  		data-ad-unit    = "DAN-rhaj0t40uxis" 
