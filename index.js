@@ -264,6 +264,7 @@ var markersOnMap = []
 var markerIndex = []
 // search 
 var timeTerm
+var randomElement
 search.on("click", function(){
     // 랜덤으로 뽑은 인덱스중 중복하는 인덱스를 줄이기 위한 리스트 
     markerIndex = []
@@ -272,6 +273,7 @@ search.on("click", function(){
     count = 0
     catSearch()
     timeTerm = 100
+    randomElement = markers[0]
     setTimeout(start(0,markerIndex),300)
     
 })
@@ -289,10 +291,10 @@ function start(counter,markerIndex){
 
 
             do{
-                var randomElement = markers[Math.floor(Math.random() * markers.length)];
+                randomElement = markers[Math.floor(Math.random() * markers.length)];
                 d = "";
                 console.log(randomElement);
-                if(randomElement.distance == undefined){
+                if(typeof randomElement == "undefined"){
                     continue;
                 }
                 d = randomElement.distance
