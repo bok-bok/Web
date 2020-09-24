@@ -162,7 +162,7 @@ function catSearch(){
     points.push(point4)
     for(var i = 0; i < points.length; i++){
         Drawmarkers(points[i]);
-        k = i
+       
     }
    
 
@@ -179,7 +179,7 @@ function Drawmarkers(place){
     
 
     for(var i = 1; i < 4; i++){
-        page = i
+        
         ps.categorySearch('FD6', placesSearchCB, 
         {location: place,
         radius:d,
@@ -197,9 +197,7 @@ function placesSearchCB (data, status, pagination) {
            
         }       
     }
-    if(page == 3 & k == 4){
-        start(0,markerIndex)
-    }
+    
 
 }
 
@@ -281,6 +279,7 @@ search.on("click", function(){
     timeTerm = 100
     catSearch()
     
+    setTimeout(start(0,markers),1000)
     
     
     
