@@ -291,6 +291,7 @@ function start(counter,markerIndex){
             do{
                 var randomElement = markers[Math.floor(Math.random() * markers.length)];
                 d = "";
+                console.log(randomElement);
                 if(randomElement.distance == undefined){
                     continue;
                 }
