@@ -279,7 +279,7 @@ search.on("click", function(){
     timeTerm = 100
     catSearch()
     
-    setTimeout(start(0,markers),1000)
+    setTimeout(start(0,markerIndex),1000)
     
     
     
