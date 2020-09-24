@@ -12,14 +12,9 @@
     margin-left: 50px
 }
 
-@media only screen and(max-width: 768px){
-    .btn:hover{
-        display:none;
+@media only screen and(min-width: 768px){
+    button:hover{
+        
     }
 }
 
-input[type=range]::range-thumb {
-    width: 40px;
-    height: 40px;
-    
-  }
