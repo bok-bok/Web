@@ -162,6 +162,7 @@ function catSearch(){
     points.push(point4)
     for(var i = 0; i < points.length; i++){
         Drawmarkers(points[i]);
+        k = i
     }
    
 
@@ -196,7 +197,7 @@ function placesSearchCB (data, status, pagination) {
            
         }       
     }
-    if(page == 3){
+    if(page == 3 & k == 4){
         start(0,markerIndex)
     }
 
