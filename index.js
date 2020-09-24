@@ -175,11 +175,7 @@ function catSearch(){
 
 function Drawmarkers(place){
         
-    //var marker = new kakao.maps.Marker({  
-    //    map: map, 
-    //    position: place,
-    //    image: markerImage
-    //}); 
+    
 
     for(var i = 1; i < 4; i++){
         ps.categorySearch('FD6', placesSearchCB, 
@@ -196,9 +192,7 @@ function placesSearchCB (data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
         for (var i=0; i<data.length; i++) {
             markers.push(data[i]);
-               
-            
-            
+           
         }       
     }
 }
@@ -273,6 +267,7 @@ var timeTerm
 search.on("click", function(){
     // 랜덤으로 뽑은 인덱스중 중복하는 인덱스를 줄이기 위한 리스트 
     markerIndex = []
+    markers =[]
     markersOnMap = []
     count = 0
     catSearch()
