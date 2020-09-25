@@ -133,7 +133,7 @@ var k
 // 음식점을 찾는 함수 
 function catSearch(){
     k = 0
-    markers = []
+    markers = []                    
     var points = []
     makeMap()
     circle.setMap(map)
@@ -187,7 +187,9 @@ function Drawmarkers(place){
     }
 
 }
-
+function filterNothing(marker){
+    return marker.distance != ""
+}
 var markerIndex = []
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
@@ -199,7 +201,12 @@ function placesSearchCB (data, status, pagination) {
     }
     k++
     if(k == 15){
-        start(0,markerIndex)
+        markers = markers.filter(filterNothing)
+        var t = markers.length
+        if(t > 15){
+            t = 15
+        }
+        start(0,markerIndex,t)
     }
 
 }
@@ -292,10 +299,10 @@ search.on("click", function(){
 
 
 
-function start(counter,markerIndex){
+function start(counter,markerIndex,t){
     
     timeTerm *= 1.1
-    if(counter < 15){
+    if(counter < t){
         setTimeout(function(){
             counter++
 
@@ -315,7 +322,7 @@ function start(counter,markerIndex){
             markerIndex.push(randomElement)
             
             MakeStarMarker(randomElement)
-            start(counter,markerIndex)
+            start(counter,markerIndex,t)
         },timeTerm)
     } 
 }
