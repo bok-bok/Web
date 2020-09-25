@@ -12,11 +12,11 @@
     margin-left: 50px
 }
 
-
-
-h1{
+.font{
     font-family: 'Noto Sans KR', sans-serif;
 }
+
+
 
 @media only screen and (max-width: 768px) {
     .carousel-indicators {
