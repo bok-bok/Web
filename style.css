@@ -1,6 +1,6 @@
 
 .ad-banner{
-    width:320px;
+    
     margin: 0 auto;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .map{
-    width: 500px;
+    width: 1000px;
     height:500px
 }
 
@@ -40,6 +40,10 @@
         width: 100px;
         height: 50px;
     }
-   
+    
+    .map{
+        width: 500px;
+        height:500px
+    }
 
 }
