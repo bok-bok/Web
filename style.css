@@ -16,7 +16,10 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-
+.sideAd{
+    width: 160px;
+    height: 600px;
+}
 
 @media only screen and (max-width: 768px) {
     .carousel-indicators {
