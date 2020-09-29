@@ -22,7 +22,7 @@
 }
 
 .map{
-    width: 1000px;
+    width: 500px;
     height:500px
 }
 
@@ -40,9 +40,6 @@
         width: 100px;
         height: 50px;
     }
-    .map{
-        width: 500px;
-        height:500px
-    }
+   
 
 }
